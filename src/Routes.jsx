@@ -36,6 +36,16 @@ function Register({ navigation }) {
 }
 
 export const Routes = () => {
+  const [loading, setLoading] = useState(true);
+
+  if (loading) {
+    return (
+      <Center>
+        <ActivityIndicator size="large" />
+      </Center>
+    );
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
