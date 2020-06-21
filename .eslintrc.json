@@ -1,0 +1,43 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier/react",
+    "prettier"
+  ],
+  "parser": "babel-eslint",
+  "plugins": ["react", "prettier", "jsx-a11y", "import"],
+  "rules": {
+    "react/prefer-stateless-function": [
+      0,
+      {
+        "ignorePureComponents": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".jsx", ".js"]
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "react/prop-types": "off",
+    "global-require": "off",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTaggedTemplates": true
+      }
+    ]
+  }
+}
+// 'no-console': 'off',
+// 'react/state-in-constructor': 'off',
+// 'react/static-property-placement': 'off',
+// 'react/jsx-props-no-spreading': 'off',
+// 'no-param-reassign': 'off',
