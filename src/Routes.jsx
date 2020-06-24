@@ -1,42 +1,29 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { Text, Button } from 'react-native';
+import { ActivityIndicator, AsyncStorage } from 'react-native';
 import { Center } from './Center';
-
-const Stack = createStackNavigator();
-
-function Login({ navigation }) {
-  return (
-    <Center>
-      <Text>I am a login screen</Text>
-      <Button
-        title="go to register"
-        onPress={() => {
-          navigation.navigate('Register');
-        }}
-      />
-    </Center>
-  );
-}
-
-function Register({ navigation }) {
-  return (
-    <Center>
-      <Text>I am a register screen</Text>
-      <Button
-        title="go to login"
-        onPress={() => {
-          navigation.navigate('Login');
-          // navigation.goBack();
-        }}
-      />
-    </Center>
-  );
-}
+import { AuthContext } from './AuthProvider';
+import { AppTabs } from './AppTabs';
+import { AuthStack } from './AuthStack';
 
 export const Routes = () => {
+  const { user, login } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // check if the user is logged in or not
+    AsyncStorage.getItem('user')
+      .then((userString) => {
+        if (userString) {
+          // decode it
+          login();
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   if (loading) {
     return (
@@ -48,18 +35,7 @@ export const Routes = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen
-          options={{ headerTitle: 'Sign In' }}
-          name="Login"
-          component={Login}
-        />
-        <Stack.Screen
-          options={{ headerTitle: 'Sign Up' }}
-          name="Register"
-          component={Register}
-        />
-      </Stack.Navigator>
+      {user ? <AppTabs /> : <AuthStack />}
     </NavigationContainer>
   );
 };

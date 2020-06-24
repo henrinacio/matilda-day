@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.2.0",
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/bottom-tabs": "^5.5.2",
     "@react-navigation/drawer": "^5.8.2",
@@ -29,7 +30,7 @@
     "@babel/core": "^7.8.6",
     "babel-eslint": "^10.1.0",
     "babel-preset-expo": "~8.1.0",
-    "eslint": "^7.3.0",
+    "eslint": "7.2",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.21.2",

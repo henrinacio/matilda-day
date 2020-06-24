@@ -1,17 +1,26 @@
 {
   "env": {
     "es6": true,
-    "browser": true,
-    "jest": true
+    "browser": true
+    // "jest": true,
+    // "node: true
   },
   "extends": [
+    // "eslint:recommended",
     "plugin:react/recommended",
+    // "plugin:import/errors",
+    // "plugin:import/warnings",
     "airbnb",
     "prettier/react",
     "prettier"
   ],
   "parser": "babel-eslint",
   "plugins": ["react", "prettier", "jsx-a11y", "import"],
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module",
+    "jsx": true
+  },
   "rules": {
     "react/prefer-stateless-function": [
       0,
@@ -28,6 +37,7 @@
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
     "global-require": "off",
+    "no-console": "off",
     "no-unused-expressions": [
       "error",
       {
@@ -36,7 +46,7 @@
     ]
   }
 }
-// 'no-console': 'off',
+
 // 'react/state-in-constructor': 'off',
 // 'react/static-property-placement': 'off',
 // 'react/jsx-props-no-spreading': 'off',
